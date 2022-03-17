@@ -1,0 +1,26 @@
+.layout {
+    margin-top: 2.4rem;
+}
+
+.layout > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+// sidebar
+.layout--3 > .container > div:first-child {
+    flex-basis: 18%;
+    max-width: 22.5rem;
+}
+
+// feed
+.layout--3 > .container > div:nth-child(2) {
+    flex-basis: 50%;
+}
+
+// activity
+.layout--3 > .container > div:last-child {
+    flex-basis: 25%;
+}
+  

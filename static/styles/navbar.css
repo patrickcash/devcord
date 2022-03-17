@@ -1,0 +1,11 @@
+.header {
+    padding: 1.5rem;
+    background-color: var(--color-dark);
+}
+
+.header > .container {
+    display: flex;
+    gap: 9.5rem;
+}
+  
+  

@@ -1,10 +1,10 @@
 {% load static %}
-<header>
-    <div class="container">
-        <a href="{% url 'home' %}">
+<header class="navbar">
+    <div class="navbar__container container">
+        <a href="{% url 'home' %}" class="navbar__logo">
             <h1>Devcord</h1>
         </a>
-        <form method="GET" action="{% url 'home' %}">
+        <form class="navbar__search" method="GET" action="{% url 'home' %}">
             <label>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>search</title>
@@ -16,20 +16,31 @@
             </label>
         </form>
 
-        <nav >
+        <nav class="navbar__menu">
 
             {% if request.user.is_authenticated %}
                 <!-- Logged In -->
-                <a href="{% url 'logout' %}">
-                    <img src="{% static 'images/avatar.svg' %}" />
-                    <p>Logout</p>
-                </a>
+                <div class="navbar__user">
+                    <a href="{% url 'logout' %}">
+                        <div class="avatar avatar--medium active">
+                            <img src="{% static 'images/avatar.svg' %}" />
+                        </div>
+                        <p>Logout</p>
+                    </a>
+                </div>
             {% else %}
                 <!-- Logged Out -->
-                <a href="{% url 'login' %}">
-                    <img src="{% static 'images/avatar.svg' %}" />
-                    <p>Login</p>
-                </a>
+                <div class="navbar__user">
+                    <div class="avatar avatar--medium">
+                        <img src="{% static 'images/avatar.svg' %}" />
+                    </div>
+                    <a href="{% url 'login' %}">
+                        <p>Login</p>
+                    </a>
+                    <a href="{% url 'signup' %}">
+                        <p>Signup</p>
+                    </a>
+                </div>
             {% endif %}
         </nav>
     </div>

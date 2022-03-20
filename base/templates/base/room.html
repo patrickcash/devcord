@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<main class="profile-page layout layout--2">
+  <div class="container">
+    <!-- Room Start -->
+    <div class="room">
+      <div class="room__top">
+        <div class="room__topLeft">
+          <a href="{% url 'home' %}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <title>arrow-left</title>
+              <path
+                d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+              </path>
+            </svg>
+          </a>
+          <h3>Room</h3>
+        </div>
+        {% if room.host == request.user %}
+        <div class="room__topRight">
+          <a href="{% url 'update-room' room.id %}">
+            <svg enable-background="new 0 0 24 24" width="24" height="24" viewBox="0 0 24 24">
+              xmlns="http://www.w3.org/2000/svg">
+              <title>Edit</title>
+              <path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/>
+            </svg>
+          </a>
+          <a href="{% url 'delete-room' room.id %}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <title>Delete</title>
+              <path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/>
+            </svg>
+          </a>
+        </div>
+        {% endif %}
+
+      </div>
+      <div class="room__box scroll">
+        <div class="room__header scroll">
+          <div class="room__info">
+            <h3>{{room.name}}</h3>
+            <span>{{room.created|timesince}} ago</span>
+          </div>
+          <div class="room__hosted">
+            <p>Hosted By</p>
+              <div class="avatar avatar--small">
+                <img src="{{room.host.avatar.url}}" />
+              </div>
+              <span>@{{room.host.username}}</span>
+          </div>
+
+          <span class="room__topics">{{room.topic}}</span>
+        </div>
+
+        <div class="room__conversation">
+          <div class="threads scroll">
+
+
+            {% for comment in comments %}
+            <div class="thread">
+              <div class="thread__top">
+                <div class="thread__author">
+                    <div class="avatar avatar--small">
+                      <img src="{{comment.user.avatar.url}}" />
+                    </div>
+                    <span>@{{comment.user.username}}</span>
+                  <span class="thread__date">{{comment.created|timesince}} ago</span>
+                </div>
+
+              </div>
+              <div class="thread__details">
+                {{comment.body}}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+      <div class="room__comment">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <input name="body" placeholder="Write your comment here..." />
+        </form>
+      </div>
+    </div>
+    <!-- Room End -->
+
+    <!--   Start -->
+    <div class="participants">
+      <h3 class="participants__top">Participants <span>({{participants.count}} Joined)</span></h3>
+      <div class="participants__list scroll">
+        {% for user in participants %}
+          <div class="avatar avatar--medium">
+            <img src="{{user.avatar.url}}" />
+          </div>
+          <p>
+            {{user.name}}
+            <span>@{{user.username}}</span>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+    <!--  End -->
+  </div>
+</main>
+{% endblock content %}

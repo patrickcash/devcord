@@ -8,23 +8,33 @@
     align-items: flex-start;
 }
 
-// sidebar
+// home - sidebar
 .layout--3 > .container > div:first-child {
     flex-basis: 18%;
     max-width: 22.5rem;
 }
 
-// feed
+// home - feed
 .layout--3 > .container > div:nth-child(2) {
     flex-basis: 50%;
 }
 
-// activity
+// home - activity
 .layout--3 > .container > div:last-child {
     flex-basis: 25%;
 }
 
-// layout box
+// room - chat
+.layout--2 > .container > div:first-child {
+    flex-basis: 72%;
+}
+
+// room - participants
+.layout--2 > .container > div:last-child {
+    flex-basis: 25%;
+}
+
+// dialog box
 .layout__box {
     width: 90%;
     max-width: 48rem;

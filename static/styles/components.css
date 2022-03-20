@@ -4,6 +4,9 @@
     margin: auto;
 }
 
+/*===============================
+Button
+================================*/
 .btn {
     background-color: transparent;
     border: none;
@@ -18,18 +21,18 @@
     font-weight: 500;
 }
 
-.btn__link {
+.btn--link {
     border-radius: 0;
     padding: 0;
     color: var(--color-main);
     box-shadow: none;
 }
 
-.btn__link:hover {
+.btn--link:hover {
     text-decoration: underline;
 }
 
-.btn__main {
+.btn--main {
     background-color: var(--color-main);
     color: var(--color-dark);
 }
@@ -38,12 +41,12 @@
     opacity: 0.9;
 }
 
-.btn__dark {
+.btn--dark {
     background-color: var(--color-dark-light);
     color: var(--color-light);
 }
 
-.btn__pill {
+.btn--pill {
     border-radius: 10rem;
     font-size: 1.4rem;
     font-weight: 700;
@@ -52,6 +55,10 @@
     background: transparent;
     border: 2px solid var(--color-main);
 }
+
+/*===============================
+Auth
+================================*/
 
 .auth .layout__boxHeader {
     text-align: center;
@@ -62,6 +69,10 @@
     margin-top: 3rem;
     text-align: center;
 }
+
+/*===============================
+Avatar
+================================*/
 
 .avatar {
     position: relative;
@@ -128,4 +139,20 @@
     height: 1rem;
     bottom: 2px;
     right: 3.5px;
+}
+
+/*===============================
+Create Room
+================================*/
+
+.create-room.layout .layout__box {
+    max-width: 68rem;
+}
+
+/*===============================
+Delete Item
+================================*/
+
+.delete-item.layout .layout__box {
+    max-width: 68rem;
 }

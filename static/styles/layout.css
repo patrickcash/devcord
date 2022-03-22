@@ -8,32 +8,6 @@
     align-items: flex-start;
 }
 
-// home - sidebar
-.layout--3 > .container > div:first-child {
-    flex-basis: 18%;
-    max-width: 22.5rem;
-}
-
-// home - feed
-.layout--3 > .container > div:nth-child(2) {
-    flex-basis: 50%;
-}
-
-// home - activity
-.layout--3 > .container > div:last-child {
-    flex-basis: 25%;
-}
-
-// room - chat
-.layout--2 > .container > div:first-child {
-    flex-basis: 72%;
-}
-
-// room - participants
-.layout--2 > .container > div:last-child {
-    flex-basis: 25%;
-}
-
 // dialog box
 .layout__box {
     width: 90%;
@@ -77,7 +51,7 @@
         display: none;
     }
     
-    .layout--3 > .container > div:nth-child(2) {
+    .roomList {
         flex-basis: 100%;
     }
 }

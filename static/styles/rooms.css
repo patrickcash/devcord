@@ -2,6 +2,10 @@
 Room List
 ================================*/
 
+.roomList {
+    flex-basis: 50%;
+}
+
 .roomList__header {
     display: flex;
     justify-content: space-between;
@@ -109,9 +113,17 @@ Room List
     font-size: 1.3rem;
 }
 
-/*==============================
-=>  Room
+/*===============================
+  Room
 ================================*/
+
+.room {
+    flex-basis: 72%;
+}
+
+.participants {
+    flex-basis: 25%;
+}
 
 .room,
 .participants {
@@ -127,7 +139,7 @@ Room List
         display: none;
     }
 
-    .layout--2 > .container > div:first-child {
+    .room {
         flex-basis: 100%;
     }
 }

@@ -27,7 +27,7 @@ def login_page(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.error(request, form.errors)
+            messages.error(request, 'Incorrect password')
 
     context = {'page': page}
     return render(request, 'base/login.html', context)
@@ -78,6 +78,15 @@ def room(request, pk):
     room = Room.objects.get(id=pk)
     comments = room.message_set.all()
     participants = room.participants.all()
+    
+    if request.method == 'POST':
+        message = Message.objects.create(
+            user=request.user,
+            room=room,
+            body=request.POST.get('body')
+        )
+        room.participants.add(request.user)
+        return redirect('room', pk=room.id)
     
     context = {'room': room, 'comments': comments,
                'participants': participants}
@@ -141,8 +150,27 @@ def delete_room(request, pk):
     return render(request, 'base/delete.html', {'obj': room})
 
 
+@login_required(login_url='login')
+def delete_message(request, pk):
+    message = Message.objects.get(id=pk)
+
+    if request.user != message.user:
+        return HttpResponse('Users can only delete their own comments')
+
+    if request.method == 'POST':
+        message.delete()
+        return redirect('home')
+    
+    return render(request, 'base/delete.html', {'obj': message})
+
+
 def topics_page(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     
     topics = Topic.objects.filter(name__icontains=q)
     return render(request, 'base/topics.html', {'topics': topics})
+
+
+def activity_page(request):
+    room_messages = Message.objects.all()
+    return render(request, 'base/activity.html', {'comments': comments})

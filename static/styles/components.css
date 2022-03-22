@@ -142,6 +142,63 @@ Avatar
 }
 
 /*===============================
+Dropdown Menu
+================================*/
+
+.dropdown-menu {
+    z-index: 111;
+    position: absolute;
+    top: 5rem;
+    right: 0.5rem;
+    background: var(--color-dark-light);
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    padding: 1.2rem 4rem;
+    display: block;
+    color: var(--color-light) !important;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--color-dark-medium);
+}
+
+.dropdown-menu > a:not(:last-child) {
+    border-bottom: 1px solid var(--color-dark-medium);
+}
+
+.dropdown-menu a svg {
+    fill: var(--color-light);
+}
+
+.mobile-menu {
+    margin-bottom: 3rem;
+}
+
+.mobile-menuItems {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+@media screen and (min-width: 500px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+/*===============================
 Create Room
 ================================*/
 

@@ -350,7 +350,7 @@ Room List
     position: relative;
 }
 
-.room__message > form > input::placeholder {
+.room__comment > form > input::placeholder {
     color: var(--color-light-gray);
 }
 

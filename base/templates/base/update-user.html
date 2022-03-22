@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<main class="update-account layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{% url 'home' %}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <title>Back</title>
+                <path
+                d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z">
+                </path>
+              </svg>
+          </a>
+          <h3>Edit your profile</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <form class="form" action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          {% for field in form %}
+          <div class="form__group">
+            <label for="profile_pic">{{field.label}}</label>
+            {{field}}
+          </div>
+          {% endfor %}
+
+
+          <div class="form__action">
+            <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
+            <button class="btn btn--main" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+{% endblock content %}

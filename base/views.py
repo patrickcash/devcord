@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import User, Room, Topic, Message
-from .forms import NewUserForm, RoomForm
+from .forms import NewUserForm, UserForm, RoomForm
 
 
 def login_page(request):
@@ -53,6 +53,30 @@ def signup_page(request):
             messages.error(request, form.errors)
 
     return render(request, 'base/signup.html', {'form': form})
+
+
+def user_profile(request, pk):
+    user = User.objects.get(id=pk)
+    rooms = user.room_set.all()
+    comments = user.message_set.all()
+    topics = Topic.objects.all()
+    context = {'user': user, 'rooms': rooms,
+               'comments': comments, 'topics': topics}
+    return render(request, 'base/profile.html', context)
+
+
+@login_required(login_url='login')
+def update_user(request):
+    user = request.user
+    form = UserForm(instance=user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user-profile', pk=user.id)
+
+    return render(request, 'base/update-user.html', {'form': form})
 
 
 def home(request):

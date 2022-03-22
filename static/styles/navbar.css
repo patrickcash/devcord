@@ -100,3 +100,20 @@
     font-size: 1.4rem;
     display: block;
 }
+
+.navbar__menu svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: var(--color-light);
+}
+
+.dropdown-button {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.dropdown-button:hover svg {
+    fill: var(--color-main);
+}

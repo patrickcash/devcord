@@ -8,7 +8,30 @@
     align-items: flex-start;
 }
 
-// dialog box
+/*========== 3 Column Layout ==========*/
+.layout--3 > .container > div:first-child {
+    flex-basis: 18%;
+    max-width: 22.5rem;
+}
+
+.layout--3 > .container > div:nth-child(2) {
+    flex-basis: 50%;
+}
+
+.layout--3 > .container > div:last-child {
+    flex-basis: 25%;
+}
+
+/*========== 2 Column Layout ==========*/
+.layout--2 > .container > div:first-child {
+    flex-basis: 72%;
+}
+
+.layout--2 > .container > div:last-child {
+    flex-basis: 25%;
+}
+
+/*========== Layout Box ==========*/
 .layout__box {
     width: 90%;
     max-width: 48rem;
@@ -51,7 +74,7 @@
         display: none;
     }
     
-    .roomList {
-        flex-basis: 100%;
+    .layout--3 > .container > div:nth-child(2) {
+       flex-basis: 100%;
     }
 }

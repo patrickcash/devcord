@@ -117,14 +117,6 @@ Room List
   Room
 ================================*/
 
-.room {
-    flex-basis: 72%;
-}
-
-.participants {
-    flex-basis: 25%;
-}
-
 .room,
 .participants {
     background: var(--color-dark);
@@ -139,8 +131,8 @@ Room List
         display: none;
     }
 
-    .room {
-        flex-basis: 100%;
+    .layout--2 > .container > div:first-child {
+       flex-basis: 100%;
     }
 }
 

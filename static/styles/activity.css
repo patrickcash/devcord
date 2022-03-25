@@ -1,5 +1,4 @@
 .activities {
-    flex-basis: 25%;
     background: var(--color-dark);
     border-radius: 5px;
     overflow: hidden;

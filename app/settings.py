@@ -12,6 +12,17 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+import os
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_value(env_variable):
+    try:
+      	return os.environ[env_variable]
+    except KeyError:
+        error_msg = 'Set the {} environment variable'.format(var_name)
+        raise ImproperlyConfigured(error_msg)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a)7axifwlv@#2k1+=ys1wfbqghx95&3zc0^ypxx(b#!ud8-+p6'
+SECRET_KEY = get_env_value('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,10 +90,10 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'devcord',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost'
+        'NAME': get_env_value('DATABASE_NAME'),
+        'USER': get_env_value('DATABASE_USER'),
+        'PASSWORD': get_env_value('DATABASE_PASSWORD'),
+        'HOST': get_env_value('DATABASE_HOST'),
     }
 }
 

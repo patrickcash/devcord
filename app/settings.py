@@ -92,13 +92,13 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': get_env_value('DATABASE_NAME'),
-    #     'USER': get_env_value('DATABASE_USER'),
-    #     'PASSWORD': get_env_value('DATABASE_PASSWORD'),
-    #     'HOST': get_env_value('DATABASE_HOST'),
-    # }
+    'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': get_env_value('DATABASE_NAME'),
+        # 'USER': get_env_value('DATABASE_USER'),
+        # 'PASSWORD': get_env_value('DATABASE_PASSWORD'),
+        # 'HOST': get_env_value('DATABASE_HOST'),
+    }
 }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
